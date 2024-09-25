@@ -2,15 +2,50 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>University Certificate Download</title>
+    <title>University Website Design - Easy Tutorials</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <style>
+        .certificate {
+            display: none;
+            border: 2px solid #000;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            background-color: #f9f9f9; /* Light background for the certificate */
+            border-radius: 10px; /* Rounded corners */
+        }
+        h2 {
+            color: #007BFF; /* Header color */
+        }
+        p {
+            color: #333; /* Text color */
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px; /* Rounded input fields */
+        }
+        .hero-btn {
+            background-color: #28a745; /* Button color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .hero-btn.red-btn {
+            background-color: #dc3545; /* Red button color */
+        }
+    </style>
 </head>
 <body>
     <section class="sub-header">
         <nav>
-            <a href="index.html"><img src="images/logo.png" alt="University Logo"></a>
+            <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
             <div class="nav-links" id="navLinks">  
                 <i class="fa fa-close" onclick="hideMenu()"></i>
                 <ul>
@@ -23,50 +58,78 @@
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
         </nav>
-        <h1>Download Your Certificate</h1>
+        <h1>Our Certificate & Online Programs For 2021</h1>
     </section>
     
-    <!---------- Certificate Download Section ---------->
+    <!---------- Blog Page Content ---------->
 
-    <section class="certificate-download">
+    <section class="blog-content">
         <div class="row">
-            <div class="form-container">
-                <h2>Enter Your Details to Download Certificate</h2>
+            <div class="blog-left">
+                <img src="images/certificate.jpg" alt="Certificate Image">
+                <h2>Our Certificate & Online Programs For 2021</h2>
                 
-                <form id="certificateForm">
-                    <input type="text" name="name" placeholder="Enter Name" required>
-                    <input type="text" name="registration_number" placeholder="Enter Registration Number" required>
-                    <input type="text" name="course" placeholder="Enter Course" required>
-                    <button type="submit" class="hero-btn red-btn">Download Certificate</button>
-                </form>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet turpis nulla, eleifend faucibus est sollicitudin ut. Maecenas ut venenatis ex, et dapibus purus. Donec sit amet nisl non justo malesuada fermentum. Donec eget felis dolor. Suspendisse condimentum vestibulum ex ac cursus.</p>
+                <br>
+                <div class="comment-box">
+                    <h3>Certificate</h3>
+                    <form class="comment-form" onsubmit="generateCertificate(event)">
+                        <input type="text" id="name" placeholder="Enter Name" required>
+                        <input type="text" id="registration" placeholder="Registration Number" required>
+                        <textarea id="course" rows="5" placeholder="Attended Course" required></textarea>
+                        <input type="text" id="signature" placeholder="Enter Your Signature" required> <!-- Make this visible -->
+                        <button type="submit" class="hero-btn red-btn">Generate Certificate</button>
+                    </form>
+                </div>
 
-                <div id="popupMessage" class="popup" style="display:none;">
-                    <span class="popup-text">Certificate sent successfully! Please check your email.</span>
+                <div id="certificate" class="certificate">
+                    <h2>Certificate of Completion</h2>
+                    <p>This certifies that</p>
+                    <h3 id="certName"></h3>
+                    <p>Registration Number: <span id="certRegistration"></span></p>
+                    <p>Has successfully completed the course:</p>
+                    <h4 id="certCourse"></h4>
+                    <p>Congratulations on completing this course! We wish you success in your future endeavors.</p>
+                    <p>______________________</p>
+                    <p>Signature: <span id="certSignature"></span></p>
+                    <a id="downloadLink" href="#" style="display: none;">Download Certificate</a>
                 </div>
             </div>
-        </div>
-
-        <!---------- Display Student Details ---------->
-
-        <div id="studentDetails" style="display:none; margin-top: 20px;">
-            <h2>Student Details</h2>
-            <p><strong>Name:</strong> <span id="displayName"></span></p>
-            <p><strong>Registration Number:</strong> <span id="displayRegNo"></span></p>
-            <p><strong>Course:</strong> <span id="displayCourse"></span></p>
-        </div>
-
-        <!---------- Additional Details Section ---------->
-
-        <div id="additionalDetails" style="display:none; margin-top: 20px;">
-            <h2>Additional Student Details</h2>
-            <p><strong>Marks:</strong> <span id="displayMarks"></span></p>
-            <p><strong>Year of Passing:</strong> <span id="displayYearOfPassing"></span></p>
-            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
-            <p><strong>Phone Number:</strong> <span id="displayPhone"></span></p>
-            <p><strong>Address:</strong> <span id="displayAddress"></span></p>
+            
+            <div class="blog-right">
+                <h3>Post Categories</h3>
+                <div>
+                    <span>Business Analytics</span>
+                    <span>21</span>
+                </div>
+                <div>
+                    <span>Data Science</span>
+                    <span>28</span>
+                </div>
+                <div>
+                    <span>Machine Learning</span>
+                    <span>15</span>
+                </div>
+                <div>
+                    <span>Computer Science</span>
+                    <span>34</span>
+                </div>
+                <div>
+                    <span>AutoCAD</span>
+                    <span>42</span>
+                </div>
+                <div>
+                    <span>Journalism</span>
+                    <span>22</span>
+                </div>
+                <div>
+                    <span>Commerce</span>
+                    <span>13</span>
+                </div>
+            </div> 
         </div>
     </section>
-
+    
     <!-------- footer ---------->
 
     <section class="footer">
@@ -81,7 +144,7 @@
         <p>made with <i class="fa fa-heart-o"></i> by Easy Tutorials</p>
     </section>    
 
-    <!---- JavaScript for Toggle Menu and Popup Message ---->
+    <!----JavaScript for toggle menu---->
     <script>
         var navLinks = document.getElementById("navLinks");
 
@@ -93,50 +156,36 @@
             navLinks.style.right = "-200px";
         }
 
-        // Show popup message and student details on certificate download success
-        document.getElementById("certificateForm").onsubmit = function(event) {
-            event.preventDefault(); // Prevent form submission for demo
+        function generateCertificate(event) {
+            event.preventDefault(); // Prevent the form from submitting
 
-            // Get form data
-            const formData = new FormData(event.target);
-            const name = formData.get('name');
-            const registrationNumber = formData.get('registration_number');
-            const course = formData.get('course');
+            // Get user inputs
+            const name = document.getElementById('name').value;
+            const registration = document.getElementById('registration').value;
+            const course = document.getElementById('course').value;
+            const signature = document.getElementById('signature').value; // Get signature
 
-            // Show success message
-            var popup = document.getElementById("popupMessage");
-            popup.style.display = "block";
+            // Validate signature
+            if (!signature) {
+                alert("Please enter your signature.");
+                return;
+            }
 
-            // Display only required details
-            document.getElementById("displayName").innerText = name;
-            document.getElementById("displayRegNo").innerText = registrationNumber;
-            document.getElementById("displayCourse").innerText = course;
+            // Update certificate fields
+            document.getElementById('certName').textContent = name;
+            document.getElementById('certRegistration').textContent = registration;
+            document.getElementById('certCourse').textContent = course;
+            document.getElementById('certSignature').textContent = signature; // Update signature
 
-            // Show student details section
-            document.getElementById("studentDetails").style.display = "block";
+            // Display the certificate
+            document.getElementById('certificate').style.display = 'block';
 
-            // Hardcoded additional details
-            const marks = "85"; // Example marks
-            const yearOfPassing = "2024"; // Example year of passing
-            const email = "example@example.com"; // Example email
-            const phone = "123-456-7890"; // Example phone number
-            const address = "123 University St, City, Country"; // Example address
-
-            // Display additional details
-            document.getElementById("displayMarks").innerText = marks;
-            document.getElementById("displayYearOfPassing").innerText = yearOfPassing;
-            document.getElementById("displayEmail").innerText = email;
-            document.getElementById("displayPhone").innerText = phone;
-            document.getElementById("displayAddress").innerText = address;
-
-            // Show additional details section
-            document.getElementById("additionalDetails").style.display = "block";
-
-            // Hide popup after 3 seconds
-            setTimeout(function() {
-                popup.style.display = "none";
-            }, 3000);
+            // Create download link for the certificate
+            const downloadLink = document.getElementById('downloadLink');
+            downloadLink.href = '#'; // Replace this with the URL to download the certificate
+            downloadLink.style.display = 'block';
+            downloadLink.textContent = 'Download Certificate';
         }
-    </script> 
+    </script>
 </body>
 </html>
