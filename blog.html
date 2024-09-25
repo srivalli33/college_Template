@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Certificate Download</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <section class="sub-header">
+        <nav>
+            <a href="index.html"><img src="images/logo.png" alt="University Logo"></a>
+            <div class="nav-links" id="navLinks">  
+                <i class="fa fa-close" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="course.html">COURSE</a></li>
+                    <li><a href="blog.html">Certifications</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+        <h1>Download Your Certificate</h1>
+    </section>
+    
+    <!---------- Certificate Download Section ---------->
+
+    <section class="certificate-download">
+        <div class="row">
+            <div class="form-container">
+                <h2>Enter Your Details to Download Certificate</h2>
+                
+                <form id="certificateForm">
+                    <input type="text" name="name" placeholder="Enter Name" required>
+                    <input type="text" name="registration_number" placeholder="Enter Registration Number" required>
+                    <input type="text" name="course" placeholder="Enter Course" required>
+                    <button type="submit" class="hero-btn red-btn">Download Certificate</button>
+                </form>
+
+                <div id="popupMessage" class="popup" style="display:none;">
+                    <span class="popup-text">Certificate sent successfully! Please check your email.</span>
+                </div>
+            </div>
+        </div>
+
+        <!---------- Display Student Details ---------->
+
+        <div id="studentDetails" style="display:none; margin-top: 20px;">
+            <h2>Student Details</h2>
+            <p><strong>Name:</strong> <span id="displayName"></span></p>
+            <p><strong>Registration Number:</strong> <span id="displayRegNo"></span></p>
+            <p><strong>Course:</strong> <span id="displayCourse"></span></p>
+        </div>
+
+        <!---------- Additional Details Section ---------->
+
+        <div id="additionalDetails" style="display:none; margin-top: 20px;">
+            <h2>Additional Student Details</h2>
+            <p><strong>Marks:</strong> <span id="displayMarks"></span></p>
+            <p><strong>Year of Passing:</strong> <span id="displayYearOfPassing"></span></p>
+            <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+            <p><strong>Phone Number:</strong> <span id="displayPhone"></span></p>
+            <p><strong>Address:</strong> <span id="displayAddress"></span></p>
+        </div>
+    </section>
+
+    <!-------- footer ---------->
+
+    <section class="footer">
+        <h4>About Us</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque aliquet turpis nulla, eleifend faucibus est sollicitudin ut. Maecenas ut venenatis ex, et dapibus purus.</p>
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>made with <i class="fa fa-heart-o"></i> by Easy Tutorials</p>
+    </section>    
+
+    <!---- JavaScript for Toggle Menu and Popup Message ---->
+    <script>
+        var navLinks = document.getElementById("navLinks");
+
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+
+        // Show popup message and student details on certificate download success
+        document.getElementById("certificateForm").onsubmit = function(event) {
+            event.preventDefault(); // Prevent form submission for demo
+
+            // Get form data
+            const formData = new FormData(event.target);
+            const name = formData.get('name');
+            const registrationNumber = formData.get('registration_number');
+            const course = formData.get('course');
+
+            // Show success message
+            var popup = document.getElementById("popupMessage");
+            popup.style.display = "block";
+
+            // Display only required details
+            document.getElementById("displayName").innerText = name;
+            document.getElementById("displayRegNo").innerText = registrationNumber;
+            document.getElementById("displayCourse").innerText = course;
+
+            // Show student details section
+            document.getElementById("studentDetails").style.display = "block";
+
+            // Hardcoded additional details
+            const marks = "85"; // Example marks
+            const yearOfPassing = "2024"; // Example year of passing
+            const email = "example@example.com"; // Example email
+            const phone = "123-456-7890"; // Example phone number
+            const address = "123 University St, City, Country"; // Example address
+
+            // Display additional details
+            document.getElementById("displayMarks").innerText = marks;
+            document.getElementById("displayYearOfPassing").innerText = yearOfPassing;
+            document.getElementById("displayEmail").innerText = email;
+            document.getElementById("displayPhone").innerText = phone;
+            document.getElementById("displayAddress").innerText = address;
+
+            // Show additional details section
+            document.getElementById("additionalDetails").style.display = "block";
+
+            // Hide popup after 3 seconds
+            setTimeout(function() {
+                popup.style.display = "none";
+            }, 3000);
+        }
+    </script> 
+</body>
+</html>
