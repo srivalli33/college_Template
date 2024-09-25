@@ -92,7 +92,7 @@
                     <p>Congratulations on completing this course! We wish you success in your future endeavors.</p>
                     <p>______________________</p>
                     <p>Signature: <span id="certSignature"></span></p>
-                    <a id="downloadLink" href="#" style="display: none;">Download Certificate</a>
+                    <a id="downloadLink" href="#" style="display: none;" onclick="downloadCertificate()">Download Certificate</a>
                 </div>
             </div>
             
@@ -144,7 +144,8 @@
         <p>made with <i class="fa fa-heart-o"></i> by Easy Tutorials</p>
     </section>    
 
-    <!----JavaScript for toggle menu---->
+    <!----JavaScript for toggle menu and certificate generation---->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         var navLinks = document.getElementById("navLinks");
 
@@ -180,11 +181,39 @@
             // Display the certificate
             document.getElementById('certificate').style.display = 'block';
 
-            // Create download link for the certificate
+            // Enable download link
             const downloadLink = document.getElementById('downloadLink');
-            downloadLink.href = '#'; // Replace this with the URL to download the certificate
             downloadLink.style.display = 'block';
-            downloadLink.textContent = 'Download Certificate';
+        }
+
+        async function downloadCertificate() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Get the content of the certificate
+            const name = document.getElementById('certName').textContent;
+            const registration = document.getElementById('certRegistration').textContent;
+            const course = document.getElementById('certCourse').textContent;
+            const signature = document.getElementById('certSignature').textContent;
+
+            // Create the PDF content
+            doc.setFontSize(22);
+            doc.text("Certificate of Completion", 105, 20, null, null, "center");
+            doc.setFontSize(16);
+            doc.text("This certifies that", 105, 40, null, null, "center");
+            doc.setFontSize(18);
+            doc.text(name, 105, 60, null, null, "center");
+            doc.setFontSize(16);
+            doc.text("Registration Number: " + registration, 105, 80, null, null, "center");
+            doc.text("Has successfully completed the course:", 105, 100, null, null, "center");
+            doc.setFontSize(18);
+            doc.text(course, 105, 120, null, null, "center");
+            doc.setFontSize(16);
+            doc.text("Congratulations on completing this course!", 105, 140, null, null, "center");
+            doc.text("Signature: " + signature, 105, 160, null, null, "center");
+
+            // Save the PDF
+            doc.save(`${name}_Certificate.pdf`);
         }
     </script>
 </body>
